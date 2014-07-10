@@ -1,0 +1,17 @@
+{
+    "name": "SicherServer",
+    "version": "0.0.1",
+    "description": "c# backend",
+    "host": "127.0.0.1",
+    "username": "root",
+    "password": "",
+    "database": "security",
+    "port": "4000",
+    "issues": [
+        "removing the last character from act key obtained from database. Take care while adding new Software",
+        "Error handling not done"
+    ],
+    "dependencies": {
+        "nodemailer": "^0.7.0"
+    }
+}
