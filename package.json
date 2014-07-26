@@ -1,17 +1,25 @@
 {
-    "name": "SicherServer",
-    "version": "0.0.1",
-    "description": "c# backend",
-    "host": "127.0.0.1",
-    "username": "root",
-    "password": "",
-    "database": "security",
-    "port": "4000",
-    "issues": [
-        "removing the last character from act key obtained from database. Take care while adding new Software",
-        "Error handling not done"
-    ],
-    "dependencies": {
-        "nodemailer": "^0.7.0"
-    }
+  "name": "SicherServer",
+  "version": "0.0.1",
+  "description": "c# backend",
+  "host": "localhost",
+  "username": "akash",
+  "password": "shakdwipeea",
+  "database": "security",
+  "issues": [
+    "removing the last character from act key obtained from database. Take care while adding new Software",
+    "Error handling not done"
+  ],
+  "dependencies": {
+    "mysql": "2.3.2",
+    "nodemailer": "0.7.0"
+  },
+  "subdomain": "shak",
+  "scripts": {
+    "start": "index.js"
+  },
+    "main":"index.js",
+  "engines": {
+    "node": "0.8.x"
+  }
 }
