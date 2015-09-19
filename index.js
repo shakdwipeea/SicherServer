@@ -8,6 +8,8 @@ var http = require('http');
 var sql = require('mysql');
 var mailer = require('nodemailer');
 
+var moment = require('moment');
+
 
 var config = JSON.parse(require('fs').readFileSync('./package.json'));
 
@@ -81,7 +83,7 @@ function checkUser(msg,res) {
     var query = connection.query(queryKey,function (err,rows,fields) {
         //  console.log(rows[0].passkey);
         msg.password += '\u0000';
-	
+
         if(!err) {
             rows.forEach(function (row) {
 		console.log(row.passkey + ";" + row.used);
@@ -121,7 +123,7 @@ function checkUser(msg,res) {
 }
 
 function storeData(msg,res) {
-    //connection.query('insert into ');
+    //connection.query(' ');
     var q = "UPDATE " + msg.software.toLowerCase() + " set bios = '" + msg.bios + "' WHERE actkey = '" +  msg.password + "\u0000'";
     console.log(q);
     var query = connection.query(q,function (err,rows,fields) {
@@ -181,7 +183,7 @@ function storeData(msg,res) {
         });
 
         query2.on('end', function () {
-            var q3 = "insert into userlist (Name,email,emailVerifier,phone,address,city,country,software) values ('" + msg.username + "','" + msg.email + "','" + msg.emailVerifier + "','" + msg.phone + "','" + msg.address + "','" + msg.city + "','" + msg.country + "','" +msg.software +"')";
+            var q3 = "insert into userlist (Name,email,emailVerifier,phone,address,city,country,software, time) values ('" + msg.username + "','" + msg.email + "','" + msg.emailVerifier + "','" + msg.phone + "','" + msg.address + "','" + msg.city + "','" + msg.country + "','" +msg.software + "','" + moment().format('MMMM Do YYYY, h:mm:ss a') + "')";
             connection.query(q3, function (err, rows, fields) {
                 if(err) {
                     console.log('Error' + err);
